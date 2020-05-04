@@ -1,0 +1,21 @@
+#!/bin/bash
+
+opt1="Lock"
+opt2="Switch User"
+opt3="Log Off"
+opt4="Start System Monitor"
+int=$(zenity --title "feren OS Options Menu" --height 250 --width 300 --list --text 'What do you want to do?' --window-icon="/usr/share/icons/Windows/48x48/mimetypes/application-x-executable.png" --column 'Options' "$opt1" "$opt2" "$opt3" "$opt4")
+
+if [ "$int" = "Lock" ]; then
+    cinnamon-screensaver-command --lock &
+fi
+if [ "$int" = "Switch User" ]; then
+    cinnamon-screensaver-command --lock &
+    dm-tool switch-to-greeter &
+fi
+if [ "$int" = "Log Off" ]; then
+    gnome-session-quit --logout &
+fi
+if [ "$int" = "Start System Monitor" ]; then
+    gnome-system-monitor &
+fi
